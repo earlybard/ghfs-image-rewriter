@@ -1,4 +1,4 @@
-# ghfs-image-replacer
+# ghfs-image-rewriter
 Violentmonkey script to replace missing image URLs from GHFS 
 
 ## USAGE
@@ -7,5 +7,5 @@ Violentmonkey script to replace missing image URLs from GHFS
 2. Open GHFS: https://gloomhaven.smigiel.us/v2 
 3. Open Violentmonkey
 4. Create new script
-5. Paste in the contents of image-replacer.js
+5. Paste in the contents of image-rewriter.js
 6. Reload the page
