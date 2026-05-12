@@ -6,6 +6,9 @@
 // @match        https://gloomhaven.smigiel.us/*
 // @run-at       document-start
 // @grant        none
+// @homepageURL  https://github.com/earlybard/ghfs-image-rewriter
+// @updateURL    https://raw.githubusercontent.com/earlybard/ghfs-image-rewriter/refs/heads/main/image-replacer.js
+// @downloadURL  https://raw.githubusercontent.com/earlybard/ghfs-image-rewriter/refs/heads/main/image-replacer.js
 // ==/UserScript==
 
 (() => {
