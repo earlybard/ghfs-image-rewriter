@@ -1,14 +1,11 @@
 // ==UserScript==
 // @name         GHFS Card Image Rewriter
 // @namespace    https://gloomhaven.smigiel.us/
-// @version      0.4.1
-// @description  Replace placeholder ability-card and item-card images on Gloomhaven Full Stack with real images from cmlenius/gloomhaven-card-browser (and optionally self-hosted item scans). Covers Gloomhaven 2e, the official Mercenary packs, and (lower priority) other editions. Also hides the SVG title/level/initiative text overlays on rewritten cards, since the real artwork already contains them. Tested with Tampermonkey/Violentmonkey on desktop and the "Userscripts" Safari extension on iPad/iOS.
+// @version      0.5.0
+// @description  Replace placeholder ability-card and item-card images on Gloomhaven Full Stack with real images from cmlenius/gloomhaven-card-browser (and optionally self-hosted item scans). Covers Gloomhaven 2e, the official Mercenary packs, and (lower priority) other editions. Handles both the full "normal" card view and the compact "zoom" view used in some panels. Hides the title/level/initiative text overlays on rewritten normal-view cards (since the real artwork already contains them), but leaves the compact label bar visible in zoom view. Tested with Tampermonkey/Violentmonkey on desktop and the "Userscripts" Safari extension on iPad/iOS.
 // @match        https://gloomhaven.smigiel.us/*
 // @run-at       document-start
 // @grant        none
-// @homepageURL  https://github.com/earlybard/ghfs-image-rewriter
-// @updateURL    https://raw.githubusercontent.com/earlybard/ghfs-image-rewriter/refs/heads/main/image-replacer.js
-// @downloadURL  https://raw.githubusercontent.com/earlybard/ghfs-image-rewriter/refs/heads/main/image-replacer.js
 // ==/UserScript==
 
 (() => {
@@ -187,20 +184,35 @@
   function findCardName(svgImage) {
     const svg = svgImage.ownerSVGElement || svgImage.closest('svg');
     if (!svg) return null;
-    // Title sits in a <text> element styled with font-family: GermaniaOne.
-    const texts = svg.querySelectorAll('text');
-    for (const t of texts) {
+
+    // Only consider direct-child <text> elements. Nested <text> inside
+    // enhancement stickers (<svg class="icon"> with a numeric label) or
+    // status badges (zoom view's "D" indicator etc.) is never the card title.
+    const directTexts = [...svg.children].filter((c) => c.localName === 'text');
+
+    // Preferred path: the full "normal" card view styles the title with
+    // font-family: GermaniaOne. That's the unambiguous title.
+    for (const t of directTexts) {
       const ff = (t.getAttribute('style') || '').match(/font-family:\s*([^;]+)/i);
       if (ff && /GermaniaOne/i.test(ff[1])) {
         const txt = t.textContent.trim();
         if (txt) return txt;
       }
     }
-    // Fallback: first non-trivial <text>.
-    for (const t of texts) {
-      const txt = t.textContent.trim();
-      if (txt && txt.length > 2) return txt;
+
+    // Fallback path: the compact "zoom" view renders the name in a header
+    // strip without GermaniaOne styling, typically as "<level> <name>" (e.g.
+    // "5 Arresting March"). Skip pure-numeric/level-marker text (the standalone
+    // level and initiative texts in normal view), then strip any leading
+    // "<digits> " or "X " prefix before returning.
+    for (const t of directTexts) {
+      let txt = t.textContent.trim();
+      if (!txt || txt.length < 2) continue;
+      if (/^(\d+|X)$/i.test(txt)) continue;
+      txt = txt.replace(/^(\d+|X)\s+/i, '');
+      if (txt) return txt;
     }
+
     return null;
   }
 
@@ -268,15 +280,21 @@
 
   // Inject the overlay-hiding stylesheet. Marked SVGs (data-ghfs-rewritten="1")
   // get their direct-child <text> elements hidden -- those are the title,
-  // level, and initiative overlays drawn over the placeholder. We deliberately
-  // use a direct-child combinator (`>`) so that <text> inside nested SVGs
-  // (e.g. enhancement stickers, which are rendered as <svg class="icon">) is
-  // left visible. Uses !important so it wins against any inline style Svelte
-  // sets on the text elements.
+  // level, and initiative overlays drawn over the placeholder. The selector
+  // is scoped to `svg.normal` so it only hides overlays in the full card view;
+  // the compact "zoom" view's header label (e.g. "5 Arresting March") stays
+  // visible because it conveys level info that's useful at small sizes.
+  //
+  // The direct-child combinator (`>`) is important: it prevents the rule from
+  // hiding <text> inside nested SVGs (enhancement stickers, status icons),
+  // which we always want to keep visible.
+  //
+  // Uses !important so it wins against any inline style Svelte sets on the
+  // text elements during re-render.
   if (HIDE_OVERLAY_TEXT) {
     const overlayStyle = document.createElement('style');
     overlayStyle.textContent =
-      'svg[data-ghfs-rewritten="1"] > text { display: none !important; }';
+      'svg.normal[data-ghfs-rewritten="1"] > text { display: none !important; }';
     document.documentElement.appendChild(overlayStyle);
   }
 
