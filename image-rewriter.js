@@ -240,7 +240,8 @@
     if (!name) { log('no name for', href); return; }
 
     const slug = slugify(name);
-    const url = slugMap.get(slug) || maybeItemUrl(slug, findItemNumber(el));
+    const itemNum = findItemNumber(el);
+    const url = slugMap.get(slug) || maybeItemUrl(slug, itemNum);
     if (!url) {
       log('no mapping for', name, '(slug:', slug, ')');
       // If this SVG was previously rewritten to a different card, make sure
@@ -253,6 +254,11 @@
     handled.add(el);
     el.setAttribute('href', url);
     if (svg) svg.setAttribute('data-ghfs-rewritten', '1');
+    // For item cards, also mark the parent .overlay-card so CSS can hide the
+    // name/cost text overlays (they live outside the SVG as <p> siblings).
+    if (itemNum && svg?.parentElement) {
+      svg.parentElement.setAttribute('data-ghfs-rewritten', '1');
+    }
     log('rewrote', name, '->', url);
   }
 
@@ -306,7 +312,9 @@
   if (HIDE_OVERLAY_TEXT) {
     const overlayStyle = document.createElement('style');
     overlayStyle.textContent =
-      'svg.normal[data-ghfs-rewritten="1"] > text { display: none !important; }';
+      'svg.normal[data-ghfs-rewritten="1"] > text { display: none !important; }' +
+      '.overlay-card[data-ghfs-rewritten="1"] > p.name,' +
+      '.overlay-card[data-ghfs-rewritten="1"] > p.cost { display: none !important; }';
     document.documentElement.appendChild(overlayStyle);
   }
 
