@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GHFS Card Image Rewriter
 // @namespace    https://gloomhaven.smigiel.us/
-// @version      0.5.0
+// @version      0.6.0
 // @description  Replace placeholder ability-card and item-card images on Gloomhaven Full Stack with real images from cmlenius/gloomhaven-card-browser (and optionally self-hosted item scans). Covers Gloomhaven 2e, the official Mercenary packs, and (lower priority) other editions. Handles both the full "normal" card view and the compact "zoom" view used in some panels. Hides the title/level/initiative text overlays on rewritten normal-view cards (since the real artwork already contains them), but leaves the compact label bar visible in zoom view. Tested with Tampermonkey/Violentmonkey on desktop and the "Userscripts" Safari extension on iPad/iOS.
 // @match        https://gloomhaven.smigiel.us/*
 // @run-at       document-start
