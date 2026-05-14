@@ -221,6 +221,10 @@
       if (txt) return txt;
     }
 
+    // Fallback for item cards: no <text> children, but aria-label is set on the SVG.
+    const ariaLabel = svg.getAttribute('aria-label');
+    if (ariaLabel && ariaLabel.trim()) return ariaLabel.trim();
+
     return null;
   }
 
