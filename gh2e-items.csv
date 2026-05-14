@@ -1,0 +1,87 @@
+number,name,slug,filename,unlocked
+1,Weathered Boots,weathered-boots,gh2e-001-weathered-boots.jpg,Y
+2,Winged Shoes,winged-shoes,gh2e-002-winged-shoes.jpg,Y
+3,Hide Armor,hide-armor,gh2e-003-hide-armor.jpg,Y
+4,Leather Armor,leather-armor,gh2e-004-leather-armor.jpg,Y
+5,Scouting Lens,scouting-lens,gh2e-005-scouting-lens.jpg,Y
+6,Amulet of Life,amulet-of-life,gh2e-006-amulet-of-life.jpg,Y
+7,Poison Dagger,poison-dagger,gh2e-007-poison-dagger.jpg,Y
+8,Heater Shield,heater-shield,gh2e-008-heater-shield.jpg,Y
+9,Focusing Rod,focusing-rod,gh2e-009-focusing-rod.jpg,Y
+10,Simple Bow,simple-bow,gh2e-010-simple-bow.jpg,Y
+11,Healing Potion,healing-potion,gh2e-011-healing-potion.jpg,Y
+12,Stamina Potion,stamina-potion,gh2e-012-stamina-potion.jpg,Y
+13,Element Potion,element-potion,gh2e-013-element-potion.jpg,Y
+14,Studded Leather,studded-leather,gh2e-014-studded-leather.jpg,Y
+15,Comfortable Shoes,comfortable-shoes,gh2e-015-comfortable-shoes.jpg,Y
+16,Circlet of Elements,circlet-of-elements,gh2e-016-circlet-of-elements.jpg,Y
+17,Boots of Speed,boots-of-speed,gh2e-017-boots-of-speed.jpg,Y
+18,Heavy Basinet,heavy-basinet,gh2e-018-heavy-basinet.jpg,Y
+19,Warden's Robes,wardens-robes,gh2e-019-wardens-robes.jpg,Y
+20,Hooked Chain,hooked-chain,gh2e-020-hooked-chain.jpg,Y
+21,Power Potion,power-potion,gh2e-021-power-potion.jpg,Y
+22,Iron Spear,iron-spear,gh2e-022-iron-spear.jpg,Y
+23,Jagged Sword,jagged-sword,gh2e-023-jagged-sword.jpg,Y
+24,Black Knife,black-knife,gh2e-024-black-knife.jpg,Y
+25,Weighted Net,weighted-net,gh2e-025-weighted-net.jpg,Y
+26,Eagle-Eye Goggles,eagle-eye-goggles,gh2e-026-eagle-eye-goggles.jpg,Y
+27,Iron Helmet,iron-helmet,gh2e-027-iron-helmet.jpg,Y
+28,Chainmail,chainmail,gh2e-028-chainmail.jpg,Y
+29,Nimble Legguards,nimble-legguards,gh2e-029-nimble-legguards.jpg,Y
+30,Armorbane Bow,armorbane-bow,gh2e-030-armorbane-bow.jpg,Y
+31,Staff of Summoning,staff-of-summoning,gh2e-031-staff-of-summoning.jpg,Y
+32,Black Censer,black-censer,gh2e-032-black-censer.jpg,Y
+33,Second Skin,second-skin,gh2e-033-second-skin.jpg,Y
+34,Battle Axe,battle-axe,gh2e-034-battle-axe.jpg,Y
+35,Tower Shield,tower-shield,gh2e-035-tower-shield.jpg,Y
+36,Moon Earring,moon-earring,gh2e-036-moon-earring.jpg,Y
+37,Major Healing Potion,major-healing-potion,gh2e-037-major-healing-potion.jpg,Y
+38,Heavy Greaves,heavy-greaves,gh2e-038-heavy-greaves.jpg,Y
+39,Ring of Skulls,ring-of-skulls,gh2e-039-ring-of-skulls.jpg,Y
+40,Shadow Armor,shadow-armor,gh2e-040-shadow-armor.jpg,Y
+41,Kinetic Treads,kinetic-treads,gh2e-041-kinetic-treads.jpg,Y
+42,Endurance Footwraps,endurance-footwraps,gh2e-042-endurance-footwraps.jpg,Y
+43,Hawk Helm,hawk-helm,gh2e-043-hawk-helm.jpg,Y
+44,Precision Bow,precision-bow,gh2e-044-precision-bow.jpg,Y
+45,Major Element Potion,major-element-potion,gh2e-045-major-element-potion.jpg,Y
+46,Light Targe,light-targe,gh2e-046-light-targe.jpg,Y
+47,Cloak of Pockets,cloak-of-pockets,gh2e-047-cloak-of-pockets.jpg,Y
+48,Staff of Elements,staff-of-elements,gh2e-048-staff-of-elements.jpg,Y
+49,Horned Helm,horned-helm,gh2e-049-horned-helm.jpg,Y
+50,Robes of the Oak,robes-of-the-oak,gh2e-050-robes-of-the-oak.jpg,Y
+51,Heavy Mace,heavy-mace,gh2e-051-heavy-mace.jpg,Y
+52,Sun Earring,sun-earring,gh2e-052-sun-earring.jpg,Y
+53,Major Power Potion,major-power-potion,gh2e-053-major-power-potion.jpg,Y
+88,Spiked Shield,spiked-shield,gh2e-088-spiked-shield.jpg,Y
+96,Scroll of Swiftness,scroll-of-swiftness,gh2e-096-scroll-of-swiftness.jpg,Y
+98,Cloak of Phasing,cloak-of-phasing,gh2e-098-cloak-of-phasing.jpg,N
+99,Unstable Explosives,unstable-explosives,gh2e-099-unstable-explosives.jpg,N
+102,Steel Ring,steel-ring,gh2e-102-steel-ring.jpg,N
+104,Warding Rod,warding-rod,gh2e-104-warding-rod.jpg,N
+105,Lucky Eye,lucky-eye,gh2e-105-lucky-eye.jpg,N
+108,Thief's Hood,thiefs-hood,gh2e-108-thiefs-hood.jpg,N
+114,Gust Striders,gust-striders,gh2e-114-gust-striders.jpg,N
+115,Rod of Transference,rod-of-transference,gh2e-115-rod-of-transference.jpg,N
+116,Fated Verses,fated-verses,gh2e-116-fated-verses.jpg,Y
+117,Dawnblade,dawnblade,gh2e-117-dawnblade.jpg,N
+119,Drakescale Boots,drakescale-boots,gh2e-119-drakescale-boots.jpg,N
+124,Ignition Beetle Lantern,ignition-beetle-lantern,gh2e-124-ignition-beetle-lantern.jpg,N
+126,Brilliant Beetle Lantern,brilliant-beetle-lantern,gh2e-126-brilliant-beetle-lantern.jpg,N
+127,Twilight Beetle Lantern,twilight-beetle-lantern,gh2e-127-twilight-beetle-lantern.jpg,Y
+132,Doomed Compass,doomed-compass,gh2e-132-doomed-compass.jpg,N
+142,Magma Waders,magma-waders,gh2e-142-magma-waders.jpg,N
+145,Harrow-Hook,harrow-hook,gh2e-145-harrow-hook.jpg,N
+146,Amberhollow,amberhollow,gh2e-146-amberhollow.jpg,N
+147,Scepter of Xorn,scepter-of-xorn,gh2e-147-scepter-of-xorn.jpg,N
+149,Aesther Spyglass,aesther-spyglass,gh2e-149-aesther-spyglass.jpg,N
+150,Experimental Armor,experimental-armor,gh2e-150-experimental-armor.jpg,N
+151,Sword of the Sands,sword-of-the-sands,gh2e-151-sword-of-the-sands.jpg,N
+152,Ruby Talisman,ruby-talisman,gh2e-152-ruby-talisman.jpg,N
+154,Focusing Ray,focusing-ray,gh2e-154-focusing-ray.jpg,N
+159,Insignia of the Divine,insignia-of-the-divine,gh2e-159-insignia-of-the-divine.jpg,N
+161,Phasing Idol,phasing-idol,gh2e-161-phasing-idol.jpg,N
+162,The Night's Caress,the-nights-caress,gh2e-162-the-nights-caress.jpg,N
+163,Pendant of the Plague,pendant-of-the-plague,gh2e-163-pendant-of-the-plague.jpg,N
+164,Mask of Death,mask-of-death,gh2e-164-mask-of-death.jpg,N
+165,Master's Lute,masters-lute,gh2e-165-masters-lute.jpg,N
+167,Doctor's Coat,doctors-coat,gh2e-167-doctors-coat.jpg,N

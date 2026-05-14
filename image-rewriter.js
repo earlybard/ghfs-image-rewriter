@@ -40,18 +40,13 @@
   const CMLENIUS_IMG_BASE =
     'https://cdn.jsdelivr.net/gh/cmlenius/gloomhaven-card-browser@images';
 
-  // Where your own GH2e item scans live, once you've hosted them.
-  // Example: 'https://your-github-user.github.io/gh2e-items'
-  // Files should be named with the slugified card name, e.g. 'weathered-boots.jpg'.
-  // Leave empty until you've actually got images up there.
-  const ITEMS_BASE = '';
-  const ITEMS_EXT = 'jpg';
-  // Optional explicit allow-list of item slugs you've scanned. If empty, every
-  // unknown slug will be tried against ITEMS_BASE (a 404 is harmless but noisy).
-  const ITEM_SLUGS = new Set([
-    // 'weathered-boots',
-    // 'minor-stamina-potion',
-  ]);
+  // Where your own GH2e item scans live. Files must be named:
+  //   gh2e-{NNN}-{slug}.jpg  (e.g. gh2e-088-spiked-shield.jpg)
+  // The item number is read live from the DOM — no manifest or allow-list needed.
+  // jsDelivr serves directly from this repo (no Pages setup required); just push
+  // the items/ folder to main and set:
+  //   'https://cdn.jsdelivr.net/gh/earlybard/ghfs-image-rewriter@main/items'
+  const ITEMS_BASE = 'https://cdn.jsdelivr.net/gh/earlybard/ghfs-image-rewriter@main/items';
 
   // Cache settings (slug map is fetched from GitHub once and reused).
   const CACHE_KEY = 'ghfs-rewriter-cmlenius-map-v3';
@@ -177,10 +172,20 @@
   }
 
   // -------------------- Item URL resolver --------------------
-  function maybeItemUrl(slug) {
-    if (!ITEMS_BASE) return null;
-    if (ITEM_SLUGS.size && !ITEM_SLUGS.has(slug)) return null;
-    return `${ITEMS_BASE}/${slug}.${ITEMS_EXT}`;
+  function findItemNumber(svgImage) {
+    const svg = svgImage.ownerSVGElement || svgImage.closest('svg');
+    if (!svg) return null;
+    const card = svg.parentElement;
+    if (!card) return null;
+    const codeEl = card.querySelector('p.code');
+    if (!codeEl) return null;
+    const num = parseInt(codeEl.textContent.trim(), 10);
+    return isNaN(num) ? null : num;
+  }
+
+  function maybeItemUrl(slug, num) {
+    if (!ITEMS_BASE || !num) return null;
+    return `${ITEMS_BASE}/gh2e-${String(num).padStart(3, '0')}-${slug}.jpg`;
   }
 
   // -------------------- DOM rewriting --------------------
@@ -231,7 +236,7 @@
     if (!name) { log('no name for', href); return; }
 
     const slug = slugify(name);
-    const url = slugMap.get(slug) || maybeItemUrl(slug);
+    const url = slugMap.get(slug) || maybeItemUrl(slug, findItemNumber(el));
     if (!url) {
       log('no mapping for', name, '(slug:', slug, ')');
       // If this SVG was previously rewritten to a different card, make sure
